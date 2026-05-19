@@ -1,0 +1,146 @@
+{
+  "name": "ai-debugger",
+  "displayName": "AI Debugger Pro",
+  "publisher": "muhammadfaizanfaisal",
+  "description": "Advanced AI-powered code debugging assistant with real-time analysis",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Debugging",
+    "AI",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "ai",
+    "debugger",
+    "gemini",
+    "code-analysis",
+    "error-detection"
+  ],
+  "activationEvents": [
+    "*",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact",
+    "onLanguage:python",
+    "onLanguage:java",
+    "onLanguage:c",
+    "onLanguage:cpp"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-debugger.explain",
+        "title": "🤖 AI Explain Code"
+      },
+      {
+        "command": "ai-debugger.debug",
+        "title": "🐛 AI Debug Code"
+      },
+      {
+        "command": "ai-debugger.optimize",
+        "title": "⚡ AI Optimize Code"
+      },
+      {
+        "command": "ai-debugger.setApiKey",
+        "title": "🔑 Set Google API Key"
+      },
+      {
+        "command": "ai-debugger.fixError",
+        "title": "🔧 AI Fix Error"
+      },
+      {
+        "command": "ai-debugger.clearCache",
+        "title": "🗑️ Clear AI Cache"
+      },
+      {
+        "command": "ai-debugger.analyzeAST",
+        "title": "Analyze Code Structure"
+      },
+      {
+        "command": "ai-debugger.analyzeProject",
+        "title": "Analyze Entire Project"
+      }
+    ],
+    "configuration": {
+      "title": "AI Debugger Pro",
+      "properties": {
+        "ai-debugger.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Google Gemini API Key (get from https://aistudio.google.com/app/apikey)"
+        },
+        "ai-debugger.model": {
+          "type": "string",
+          "default": "gemini-2.5-flash-lite",
+          "enum": [
+            "gemini-2.5-flash-lite",
+            "gemini-1.5-flash",
+            "gemini-1.5-pro"
+          ],
+          "description": "Gemini model to use (FREE tier available)"
+        },
+        "ai-debugger.speedMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Fast mode - shorter responses, quicker analysis"
+        },
+        "ai-debugger.enableHover": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show AI explanations on code hover"
+        },
+        "ai-debugger.enableDiagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Real-time error detection in code"
+        },
+        "ai-debugger.enableAutoFix": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically suggest fixes for errors"
+        },
+        "ai-debugger.enableCodeLens": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show AI actions above functions"
+        },
+        "ai-debugger.maxResponseLength": {
+          "type": "number",
+          "default": 300,
+          "description": "Maximum characters in AI response"
+        },
+        "ai-debugger.cacheDuration": {
+          "type": "number",
+          "default": 300,
+          "description": "Cache duration in seconds (0 = disable cache)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "watch": "node esbuild.js --watch",
+    "compile": "node esbuild.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.29.3",
+    "@babel/traverse": "^7.29.0",
+    "@babel/types": "^7.29.0",
+    "@google/generative-ai": "^0.21.0",
+    "@typescript-eslint/parser": "^8.59.4",
+    "crypto-js": "^4.2.0",
+    "eslint": "^10.4.0",
+    "simple-git": "^3.36.0"
+  }
+}
