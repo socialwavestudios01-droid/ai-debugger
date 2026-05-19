@@ -34,4 +34,4 @@ Initial release of AI Debugger
 
 ---
 
-**Enjoy!**
+**Enjoy!**# ai-debugger
